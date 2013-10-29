@@ -1,18 +1,19 @@
 package org.andresoviedo.tests.regexp;
 
 import java.text.MessageFormat;
+import java.text.Normalizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegExpTest {
 
-	public static void main(String[] args) {
+	public static void main3(String[] args) {
 		String string = "c:\\archivos de programa\\blah\\a.exe";
 		System.out.println(string);
 		System.out.println(string.replaceAll("\\\\",
 				Matcher.quoteReplacement("\\")));
 	}
-	
+
 	/**
 	 * @param args
 	 */
@@ -34,5 +35,17 @@ public class RegExpTest {
 			System.out.println(mf.format(msgFormat, captures));
 		}
 
+	}
+
+	public static void main(String[] args) {
+		// reemplazar caracteres sin importar acentos
+
+		String string = "éléphante";
+
+		string = Normalizer.normalize(string, Normalizer.Form.NFD);
+
+		string = string.replaceAll("[^\\p{ASCII}]", "");
+
+		System.out.println(string.replaceAll("[^a-zA-Z0-9 ]", ""));
 	}
 }
