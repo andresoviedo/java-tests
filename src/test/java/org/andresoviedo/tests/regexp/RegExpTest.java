@@ -36,8 +36,22 @@ public class RegExpTest {
 		}
 
 	}
-
+	
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
+		String text = "my very long string to test";
+		String regexp = "(^|\\W)(\\w*)";
+
+		Matcher m = Pattern.compile(regexp).matcher(text);
+		while (m.find()) {
+			System.out.println("Found: "+m.group(2));
+		}
+
+	}
+
+	public static void main4(String[] args) {
 		// reemplazar caracteres sin importar acentos
 
 		String string = "éléphante";
