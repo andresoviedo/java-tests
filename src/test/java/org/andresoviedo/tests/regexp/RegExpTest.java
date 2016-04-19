@@ -26,13 +26,12 @@ public class RegExpTest {
 		Pattern p = Pattern.compile(regexp);
 		Matcher m = p.matcher(text);
 
-		MessageFormat mf = new MessageFormat(msgFormat);
 		if (m.find()) {
-			String[] captures = new String[m.groupCount()];
+			Object[] captures = new String[m.groupCount()];
 			for (int i = 0; i < m.groupCount(); i++) {
 				captures[i] = m.group(i + 1);
 			}
-			System.out.println(mf.format(msgFormat, captures));
+			System.out.println(MessageFormat.format(msgFormat, captures));
 		}
 
 	}
@@ -54,7 +53,7 @@ public class RegExpTest {
 	public static void main4(String[] args) {
 		// reemplazar caracteres sin importar acentos
 
-		String string = "éléphante";
+		String string = "Ã©lÃ©phante";
 
 		string = Normalizer.normalize(string, Normalizer.Form.NFD);
 
